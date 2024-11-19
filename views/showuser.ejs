@@ -1,0 +1,34 @@
+<%- include("menu.ejs") %>
+
+<div class="container">
+    <h1>Show Users</h1>
+    <p style="text-align: center;">
+        <a href="/download-excel" class="btn btn-primary">Download Excel</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Dob</th>
+                <th>Place</th>
+                <th>About</th>
+                <th>Img</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(function(values) { %>
+                <tr>
+                    <td><%= values.name %></td>
+                    <td><%= values.dob %></td>
+                    <td><%= values.place %></td>
+                    <td><%= values.about %></td>
+                    <td><img src="/xyz/<%= values.userfile %>" height="90" width="90" alt="<%= values.name %>"></td>
+                    <!-- Use user ID to generate PDF -->
+                    <td><a href="/download-pdf/<%= values.id %>" class="btn btn-secondary">Download</a></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
